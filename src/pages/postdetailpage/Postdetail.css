@@ -1,0 +1,36 @@
+.blogdetail-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100vh;
+    background-color: var(--color-white);
+    padding: 2em;
+    align-items: flex-start;
+}
+
+.blogdetail-container h1 {
+    margin: 2em 0 1em;
+}
+
+.blogdetail-container h2 {
+    margin: 0em 0 1em;
+}
+
+.blogdetail-container a {
+    color: var(--color-primary);
+    font-style: italic;
+    /*hij pakt deze italic stijl niet. EM tag kiezen helpt ook niet. De font style in index.css ondersteunt italic wel. Geen idee hoezo niet werkt*/
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.error-button {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    font-size: 1em;
+    border-radius: 34px;
+    padding: 0.8em;
+    width: 7em;
+    margin: 1em;
+    position: relative;
+    left: 20em;
+}

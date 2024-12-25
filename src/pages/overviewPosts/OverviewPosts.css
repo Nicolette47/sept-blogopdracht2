@@ -8,13 +8,27 @@ ul {
     padding: 1em;
 }
 
-.post-card strong {
+.blog-title {
     color: var(--color-primary);
     font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .post-card em {
     font-size: 0.8em;
     font-style: italic;
 
+}
+
+.error-button {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    font-size: 1em;
+    border-radius: 34px;
+    padding: 0.8em;
+    width: 7em;
+    margin: 1em;
+    position: relative;
+    left: 20em;
 }
