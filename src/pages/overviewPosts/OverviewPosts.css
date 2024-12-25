@@ -1,3 +1,20 @@
-h4 {
-    color: purple;
+ul {
+    list-style-type: none;
+}
+
+.post-card {
+    background-color: var(--color-white);
+    margin-bottom: 1.5em;
+    padding: 1em;
+}
+
+.post-card strong {
+    color: var(--color-primary);
+    font-size: 1.2em;
+}
+
+.post-card em {
+    font-size: 0.8em;
+    font-style: italic;
+
 }
