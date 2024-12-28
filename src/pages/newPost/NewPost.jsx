@@ -1,26 +1,70 @@
 import React from 'react';
 import './NewPost.css';
+import calculateReadTime from "../../helpers/calculateReadTime.js";
+import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 
 const NewPost = () => {
 
-    //const [title, setTitle] = React.useState('');
-   // const [subtitle, setSubTitle] = React.useState('');
-    //const [author, setAuthor] = React.useState('');
-    //const [blogpost, setBlogpost] = React.useState('');
+    const [formState, setFormState] = React.useState({
+        title: '',
+        subtitle: '',
+        author: '',
+        blogpost:'',
+    });
+
+    const navigate =useNavigate();
+
+
+    function handleChange(e) {
+        const changeFieldName = e.target.name;
+
+        setFormState ({
+            ...formState,
+            [changeFieldName]: e.target.value,
+        });
+
+    }
+
+
+    async function handleSubmit (e) {
+        e.preventDefault();
+        console.log(formState);
+
+        const allData ={
+            ...formState,
+            readTime: formState.blogpost.length > 0 ? calculateReadTime(formState.blogpost) : <p>error</p>,
+            created: new Date().toISOString(),
+            shares: 0,
+            comments: 0,
+        };
+
+        try {
+            const result = await axios.post('http://localhost:3000/posts', {allData})
+            console.log(result)
+        } catch (error){
+            console.error(error);
+
+        }
+
+        navigate("/");
+    }
+
+
 
 
     return (
         <>
-            <form className="newblog-container">
+            <form className="newblog-container"  onSubmit={handleSubmit}>
                 <label htmlFor="title-field">
                     Titel</label>
                 <input
                     type="text"
                     id="title-field"
                     name="title"
-                    //value={title}
-                    //onChange={setTitle(e.target.value)}
+                    value={formState.title}
+                    onChange={handleChange}
                     required
                 />
 
@@ -31,8 +75,8 @@ const NewPost = () => {
                     type="text"
                     id="subtitle-field"
                     name="subtitle"
-                    //value={subtitle}
-                    //onChange={setSubTitle(e.target.value)}
+                    value={formState.subtitle}
+                    onChange={handleChange}
                     required
                 />
 
@@ -42,8 +86,8 @@ const NewPost = () => {
                     type="text"
                     id="author-field"
                     name="author"
-                    //value={author}
-                    //onChange={setAuthor(e.target.value)}
+                    value={formState.author}
+                    onChange={handleChange}
                     required
                 />
 
@@ -57,12 +101,12 @@ const NewPost = () => {
                     maxLength="2000"
                     minLength="300"
                     placeholder="schrijf hier je blog. Vereiste: minimaal 300 karakters, maximaal 2000."
-                    //value={blogpost}
-                    //onChange={setBlogpost(e.target.value)}
+                    value={formState.blogpost}
+                    onChange={handleChange}
                     required
                 ></textarea>
 
-                <button type="submit">Toevoegen</button>
+                <button type="submit" >Toevoegen</button>
             </form>
         </>
     );
