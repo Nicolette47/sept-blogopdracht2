@@ -36,3 +36,7 @@
     font-size: 1.4em;
     background-color: var(--color-primary);
 }
+
+.error-message2 {
+    color: red;
+}

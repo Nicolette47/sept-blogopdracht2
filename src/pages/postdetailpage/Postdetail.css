@@ -34,3 +34,11 @@
     position: relative;
     left: 20em;
 }
+
+.delete-button {
+    background-color: var(--color-tertiary);
+    color: var(--color-white);
+    padding: 1em;
+    border-radius: 10px;
+    margin: 1.3em 0;
+}

@@ -29,13 +29,24 @@ const Postdetail = () => {
         }
     }
 
+    async function handleDeletePost(){
+        try {
+            const result = await axios.delete(`http://localhost:3000/posts/${postId}`);
+            console.log(result.data);
+        } catch (error){
+            console.error(error);
+
+        }
+    }
+
+
 
     return (
         <>
             {error &&
                 <>
                     <p> Er is iets mis gegaan met het ophalen van de gegevens. Druk op deze knop om opnieuw te
-                    proberen</p>
+                        proberen</p>
                     <button type="button" className="error-button" onClick={fetchBlog}>Klik hier</button>
                 </>
             }
@@ -49,6 +60,14 @@ const Postdetail = () => {
                         <p>Geschreven door {blogDetail.author} op {dateCambio(blogDetail.created)}</p>
                         <p>{blogDetail.content}</p>
                         <p>{blogDetail.comments} reacties - {blogDetail.shares} keer gedeeld</p>
+                        <button
+                            className="delete-button"
+                            type="button"
+                            onClick={() => {handleDeletePost(postId)}}
+                                >
+
+                            Verwijder deze blog
+                        </button>
                         <p><Link to="/overviewposts">&lt; Terug naar de overzichtspagina</Link></p>
                     </>
                 </div>
