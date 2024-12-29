@@ -10,6 +10,7 @@ import dateCambio from '../../helpers/dateCambio.js';
 const Postdetail = () => {
     const [blogDetail, setBlogDetail] = React.useState({});
     const [error, toggleError] = React.useState('');
+    const [isDeleted, setIsDeleted] = React.useState(false);
 
     const {postId} = useParams();
 
@@ -29,20 +30,29 @@ const Postdetail = () => {
         }
     }
 
-    async function handleDeletePost(){
+    async function handleDeletePost() {
         try {
-            const result = await axios.delete(`http://localhost:3000/posts/${postId}`);
-            console.log(result.data);
-        } catch (error){
+            await axios.delete(`http://localhost:3000/posts/${postId}`);
+            setIsDeleted(true);
+        } catch (error) {
             console.error(error);
 
         }
     }
 
 
+    if (isDeleted) {
+        return (
+            <>
+                <p>Deze blog is verwijderd</p>
+                <p><Link to="/overviewposts">&lt; Terug naar de overzichtspagina</Link></p>
+            </>
+        );
+    }
 
     return (
         <>
+
             {error &&
                 <>
                     <p> Er is iets mis gegaan met het ophalen van de gegevens. Druk op deze knop om opnieuw te
@@ -51,7 +61,8 @@ const Postdetail = () => {
                 </>
             }
 
-            {Object.keys(blogDetail).length > 0 &&
+
+            {Object.keys(blogDetail).length > 0 && (
                 <div className="blogdetail-container">
 
                     <>
@@ -63,18 +74,22 @@ const Postdetail = () => {
                         <button
                             className="delete-button"
                             type="button"
-                            onClick={() => {handleDeletePost(postId)}}
-                                >
-
+                            onClick={() => {
+                                handleDeletePost(postId)
+                            }}
+                        >
                             Verwijder deze blog
                         </button>
+
+
                         <p><Link to="/overviewposts">&lt; Terug naar de overzichtspagina</Link></p>
                     </>
                 </div>
+            )
+
             }
         </>
-    )
-        ;
+    );
 };
 
 export default Postdetail;
