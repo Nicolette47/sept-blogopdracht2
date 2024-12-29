@@ -6,7 +6,7 @@ import OverviewPosts from './pages/overviewPosts/OverviewPosts.jsx';
 import Postdetail from "./pages/postdetailpage/Postdetail.jsx";
 import logonavigatie from './assetsblog1/logo-medium.png';
 import {NavLink} from 'react-router-dom';
-import NotFound from './pages/notfound/NotFound.jsx';
+import NotFound from './pages/notFound/NotFound.jsx';
 
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
                             <Route path="/newpost" element={<NewPost/>} />
                             <Route path="/overviewposts" element={<OverviewPosts/>} />
                             <Route path="/postdetail/:postId"  element={<Postdetail/>} />
-                            <Route path="*" element={<NotFound/>}/>
+                            <Route path="*" element={<NotFound />}/>
                         </Routes>
                     </main>
                 </div>
