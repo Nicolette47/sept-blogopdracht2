@@ -1,0 +1,42 @@
+.newblog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-basis: 100%; /* flex-basis werkt niet terwijl dit de hoogte zou moeten definieren*/
+    flex-grow: 1;
+    margin: 5em 0 10em;
+}
+
+
+.newblog-container input {
+    width: 46em;
+    margin: 0.4em 0 1.5em;
+    font-size: 18px;
+    padding: 0.5em;
+}
+
+
+::placeholder {
+    color: var(--color-secondary);
+}
+
+
+
+.newblog-container textarea {
+    margin: 0.4em 0 1.5em;
+    font-size: 16px;
+    padding: 0.5em;
+}
+
+.newblog-container button {
+    margin: 1em 0;
+    width: 37em;
+    padding: 0.5em 0;
+    font-size: 1.4em;
+    background-color: var(--color-primary);
+}
+
+.error-message2 {
+    color: red;
+}

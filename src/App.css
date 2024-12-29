@@ -1,42 +1,87 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/*////////////////////////
+    Table of Contents
+    1. Global Styles
+    2. Typography
+    3. Layout
+        3.1 Reusables
+        3.2 Other
+    4. Areas
+        4.1 Header
+        4.2 Introduction
+        etc.
+    5. Media Queries
+////////////////////////*/
+
+
+/*Layout*/
+
+.outer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid blue;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.innerpage-container {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 1200px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 20px;
+    background-color: var(--color-secondary-light);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.individual-pages {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-secondary-light);
 }
 
-.card {
-  padding: 2em;
+
+/* AREAS */
+
+/*NAVIGATION MENU*/
+
+nav {
+    border: 2px solid greenyellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-basis: 125px;
+    width: 100%;
+    /*Wil jij ook zo'n coole gradient maken? Deze is gemaakt via https://cssgradient.io/ - kind kan de was doen!*/
+    background: linear-gradient(37deg, rgba(44, 47, 57, 1) 0%, rgba(0, 0, 0, 1) 8%, rgba(80, 83, 92, 1) 100%);
 }
 
-.read-the-docs {
-  color: #888;
+nav img {
+    width: 500px;
+    padding: 1rem;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5em;
+    margin-right: 2em;
+    font-size: 1.2em;
+}
+
+
+
+.active-menu-link {
+    border-bottom: 3px solid var(--color-purple);
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.default-menu-link {
+    border-bottom: none;
+    color: var(--color-white);
+    text-decoration: none;
 }
