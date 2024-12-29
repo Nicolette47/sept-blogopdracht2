@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import dateCambio from '../../helpers/dateCambio.js';
 
 
+
 const Postdetail = () => {
     const [blogDetail, setBlogDetail] = React.useState({});
     const [error, toggleError] = React.useState('');
@@ -23,6 +24,7 @@ const Postdetail = () => {
 
         try {
             const result = await axios.get(`http://localhost:3000/posts/${postId}`);
+            console.log(result.data);
             setBlogDetail(result.data);
         } catch (error) {
             console.error(error);
@@ -69,6 +71,7 @@ const Postdetail = () => {
                         <h1>{blogDetail.title}</h1>
                         <h2>{blogDetail.subtitle}</h2>
                         <p>Geschreven door {blogDetail.author} op {dateCambio(blogDetail.created)}</p>
+                        <em>{blogDetail.readTime} minuten lezen</em>
                         <p>{blogDetail.content}</p>
                         <p>{blogDetail.comments} reacties - {blogDetail.shares} keer gedeeld</p>
                         <button

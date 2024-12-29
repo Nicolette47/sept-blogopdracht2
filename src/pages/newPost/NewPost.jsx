@@ -39,10 +39,13 @@ const NewPost = () => {
 
         const allData = {
             ...formState,
+            readTime: calculateReadTime(formState.content),
             created: new Date().toISOString(),
             shares: 0,
             comments: 0,
         };
+
+        console.log(allData);
 
         try {
             const result = await axios.post('http://localhost:3000/posts', allData)

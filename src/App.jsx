@@ -2,11 +2,11 @@ import './App.css'
 import {Routes, Route} from 'react-router-dom';
 import Home from './pages/home/Home.jsx';
 import NewPost from './pages/newPost/NewPost.jsx';
-import NotFound from './pages/notFound/NotFound.jsx';
 import OverviewPosts from './pages/overviewPosts/OverviewPosts.jsx';
 import Postdetail from "./pages/postdetailpage/Postdetail.jsx";
 import logonavigatie from './assetsblog1/logo-medium.png';
 import {NavLink} from 'react-router-dom';
+import NotFound from './pages/notfound/NotFound.jsx';
 
 
 function App() {
